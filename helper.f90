@@ -22,4 +22,20 @@ subroutine digit_count(d, r)
 
 end subroutine digit_count
 
+function count_int_in_string(strs, strlen) result(counter)
+    implicit none
+    character(len=*), intent(in)::strs
+    integer, intent(in)::strlen
+    integer :: counter
+    integer::i
+    
+    counter = 0
+    do i=1,strlen
+        if(strs(i:i) .eq. ',') then
+            counter = counter + 1
+        end if
+    end do
+    counter = counter + 1
+end function count_int_in_string
+
 end module

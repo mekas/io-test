@@ -44,7 +44,7 @@ function parse_input_as_ints(input_path) result(ints)
     integer, allocatable::ints(:)
     character(1000)::strs
     character(:), allocatable::core_str
-    integer::io, slen
+    integer::io, slen, int_arr_size
     
     open(newunit=io, file=input_path, status="old")
     read(io, "(A)") strs
@@ -57,11 +57,14 @@ function parse_input_as_ints(input_path) result(ints)
     core_str = strs(1:slen)
     
     
-    write (*,*) strs
-    write (*,*) core_str
+    !write (*,*) strs
+    !write (*,*) core_str
+    
+    int_arr_size = count_int_in_string(core_str, slen)
+    print *, int_arr_size
     
     !dummy
-    allocate(ints(1000))
+    allocate(ints(int_arr_size))
 
 end function parse_input_as_ints
 
