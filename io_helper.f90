@@ -26,16 +26,34 @@ subroutine generate_data(output_path,n)
         call digit_count(i, digit_num)
         ! quick hack to change I0 to I<actual_length>
         write (unit=fmt,fmt='(A2,I0,A4)') "(I", digit_num, ",A$)"
-        write(io, fmt) i,","
+        write(io, fmt) i,","    
     end do
     
     call digit_count(i, digit_num)
     ! quick hack to change I0 to I<actual_length>
     write (unit=fmt,fmt='(A2,I0,A4)') "(I", digit_num, ",A$)"
     write(io, fmt) i
-    write(*, *) fmt
+    !write(*, *) fmt
     close(io)
 
 end subroutine generate_data
+
+function parse_input_as_ints(input_path) result(ints)
+    implicit none
+    character(len=*),intent(in)::input_path
+    integer, allocatable::ints(:)
+    character(1000)::strs
+    integer::io
+    
+    open(newunit=io, file=input_path, status="old")
+    read(io, "(A)") strs
+    close(io)
+    
+    write (*,*) strs
+    
+    !dummy
+    allocate(ints(1000))
+
+end function parse_input_as_ints
 
 end module io_helper

@@ -22,5 +22,4 @@ subroutine digit_count(d, r)
 
 end subroutine digit_count
 
-end module helper
-
+end module
