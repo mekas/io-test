@@ -3,7 +3,7 @@ module helper
     
 contains
 
-function digit_count(d) result(r)
+subroutine digit_count(d) result(r)
     implicit none
     integer, intent(in)::d
     integer::v

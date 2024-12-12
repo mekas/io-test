@@ -15,24 +15,25 @@ subroutine generate_data(output_path,n)
     integer::digit_num
     !fmt = "(I"// division_result //",A$)"
 
-    digit_num = digit_count(n)
-
+    call digit_count(n, digit_num)
+    !write(*,*) "test"
     ! quick hack to change I0 to I<actual_length>
-    write (unit=fmt,fmt='(A2,I0,A4)') "(I", digit_num, ",A$)"
+    ! write (unit=fmt,fmt='(A2,I0,A4)') "(I", digit_num, ",A$)"
     ! print *,fmt
     open(newunit=io, file=output_path, status="replace")
     !loop number form 1 to 100
     do i=1,n-1
-        digit_num = digit_count(i)
+        call digit_count(i, digit_num)
         ! quick hack to change I0 to I<actual_length>
         write (unit=fmt,fmt='(A2,I0,A4)') "(I", digit_num, ",A$)"
         write(io, fmt) i,","
     end do
     
-    digit_num = digit_count(i)
+    call digit_count(i, digit_num)
     ! quick hack to change I0 to I<actual_length>
     write (unit=fmt,fmt='(A2,I0,A4)') "(I", digit_num, ",A$)"
     write(io, fmt) i
+    write(*, *) fmt
     close(io)
 
 end subroutine generate_data

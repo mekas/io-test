@@ -3,11 +3,11 @@ module helper
     
 contains
 
-function digit_count(d) result(r)
+subroutine digit_count(d, r)
     implicit none
     integer, intent(in)::d
     integer::v
-    integer::r
+    integer, intent(out)::r
     integer::division_result
 
     v = d
@@ -20,7 +20,7 @@ function digit_count(d) result(r)
         r = r + 1
     end do 
 
-end function digit_count
+end subroutine digit_count
 
 end module helper
 

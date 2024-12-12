@@ -7,5 +7,6 @@ program name
 
     filepath="data.txt"
     ! 1st phase generate data
+    
     call generate_data(filepath, 100)
-    end program name
+end program name
