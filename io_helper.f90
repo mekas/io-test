@@ -43,13 +43,22 @@ function parse_input_as_ints(input_path) result(ints)
     character(len=*),intent(in)::input_path
     integer, allocatable::ints(:)
     character(1000)::strs
-    integer::io
+    character(:), allocatable::core_str
+    integer::io, slen
     
     open(newunit=io, file=input_path, status="old")
     read(io, "(A)") strs
+    allocate(character(slen)::core_str)
+    
+    !print *, slen
     close(io)
     
+    slen = len(trim(strs))
+    core_str = strs(1:slen)
+    
+    
     write (*,*) strs
+    write (*,*) core_str
     
     !dummy
     allocate(ints(1000))
