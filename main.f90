@@ -11,4 +11,6 @@ program name
     
     ! 2nd phase parse the input
     int_arr = parse_input_as_ints(filepath)
+    write (*,*) size(int_arr)
+    print *,int_arr(:)
 end program name
